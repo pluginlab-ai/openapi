@@ -21,10 +21,18 @@ npm install --save @pluginlab/openapi
 
 # Getting started
 
-## Parse OAS from string (yaml/json)
+## Parse OpenAPI specification
+
+A few functions are available to parse OpenAPI specifications.
+Note that none of them does proper validation against a JSON schema, but only some basic integrity checks to ensure that the parsed document is indeed a somewhat valid OpenAPI specification.
+
+The reason for this is that OpenAI themselves does not enforce strict schema validation on plugin manifests. These are commonly only reported as warnings.
+Most ChatGPT plugins in the store do not pass schema validation anyway.
+
+### Parse from plain strings
 
 ```typescript
-import { parseFromString, toYaml } from "@pluginlab/openapi";
+import { parseFromString } from "@pluginlab/openapi";
 
 const yaml = `
 openapi: 3.0.0
@@ -62,7 +70,7 @@ console.log({ format, doc })
 Also supports JSON through the use of the same parse function:
 
 ```typescript
-import { parseFromString, toJson, toYaml } from "@pluginlab/openapi"; 
+import { parseFromString } from "@pluginlab/openapi"; 
 
 const json = `
 {
@@ -113,6 +121,11 @@ const { format, doc } = parseFromString(json);
 
 console.log(doc)
 ```
+
+### Parse from a javascript object
+
+A function `parseFromObject` is exported by the package.
+No example is provided as the function's signature makes it pretty clear how to use it.
 
 ## Transform spec to another format
 
