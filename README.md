@@ -129,7 +129,7 @@ No example is provided as the function's signature makes it pretty clear how to 
 
 ## Transform spec to another format
 
-This package provides to utilities `toJson` and `toYaml` to convert a parsed spec to respectively stringified JSON or YAML.
+This package provides two utilities `toJson` and `toYaml` to convert a parsed spec to respectively stringified JSON or YAML.
 
 ```typescript
 import { toYaml, toJson, parseFromString } from '@pluginlab/openapi'
