@@ -143,3 +143,15 @@ const json = toJson(doc);
 console.log(yaml);
 console.log(json);
 ```
+
+## Validate spec against OpenAI's requirements
+
+OpenAI doesn't have too much requirements when it comes to validating OpenAPI specifications.
+We attempted to reproduce the same validation they are enforcing so that you can know whether a given specification will work or not for your plugin in a programmatic way.
+
+```typescript
+import { parseFromString, validateForChatGptPlugin } from '@pluginlab/openapi'
+
+const { format, doc } = parseFromString(rawOas);
+const validationErrors = validateForChatGptPlugin(doc);
+```
